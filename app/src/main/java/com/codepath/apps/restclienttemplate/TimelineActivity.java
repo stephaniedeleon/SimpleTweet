@@ -45,7 +45,7 @@ public class TimelineActivity extends AppCompatActivity {
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                Log.i(TAG, "Fetching new data!");
+                Log.i(TAG, "fetching new data!");
                 populateHomeTimeline();
             }
         });
