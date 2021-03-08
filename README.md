@@ -41,7 +41,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+None
 
 ## Open-source libraries used
 
@@ -106,7 +106,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-I had trouble with the import of the Twitter Project.
+None
 
 ## Open-source libraries used
 
