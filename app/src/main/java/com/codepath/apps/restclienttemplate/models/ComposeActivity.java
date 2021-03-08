@@ -3,11 +3,15 @@ package com.codepath.apps.restclienttemplate.models;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.codepath.apps.restclienttemplate.R;
@@ -27,8 +31,10 @@ public class ComposeActivity extends AppCompatActivity {
 
     EditText etCompose;
     Button btnTweet;
+    TextView charCount;
 
     TwitterClient client;
+    private TextWatcher textEditorWatcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +43,28 @@ public class ComposeActivity extends AppCompatActivity {
 
         etCompose = findViewById(R.id.etCompose);
         btnTweet = findViewById(R.id.btnTweet);
+        charCount = findViewById(R.id.charCount);
 
         client = TwitterApp.getRestClient(this);
+
+        // Counts the character entered in compose box
+        textEditorWatcher = new TextWatcher() {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //This sets a textview to the current length
+                charCount.setText(String.valueOf(s.length()) + "/280");
+                if(s.length() > 280) {
+                    charCount.setTextColor(Color.RED);
+                }
+            }
+
+            public void afterTextChanged(Editable s) {
+            }
+        };
+
+        etCompose.addTextChangedListener(textEditorWatcher);
 
         // Set click listener on button
         btnTweet.setOnClickListener(new View.OnClickListener() {
